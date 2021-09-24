@@ -11,11 +11,13 @@ app.use(cors());
 const PORT = process.env.PORT;
 const businesseController = require("./controllers/Yelp");
 const freeLancerController=require("./controllers/Freelancer");
+const PixabayController=require("./controllers/Pixabay")
 app.get('/', (req, res) => {
     res.status(200).json({ "message": "I'm working" });
 })
 app.get('/yelp', businesseController);
 app.get('/freeLancer', freeLancerController);
+app.get('/pixabay', PixabayController);
 app.listen(PORT, () => {
     console.log(`Listening to port ${PORT}`);
 })

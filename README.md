@@ -32,3 +32,28 @@
 - seo_url
 - seo_info
 - local
+
+## Pixabay Api
+
+- did a get request to yelp api to get Pixabay photos filtered by q
+
+### retrun info from the get request are 
+
+- id
+- pageURL
+- type
+- tags
+- previewURL
+- previewWidth
+- previewHeight
+- webformatURL
+- largeImageURL
+- views
+- downloads
+- collections
+- likes
+- comments
+- user_id
+- user
+- userImageURL
+- imageURL
