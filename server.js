@@ -9,15 +9,13 @@ require("dotenv").config();
 app.use(express.json());
 app.use(cors());
 const PORT = process.env.PORT;
-const businesseController=require("./controllers/Yelp")
-
+const businesseController = require("./controllers/Yelp");
+const freeLancerController=require("./controllers/Freelancer");
 app.get('/', (req, res) => {
-    res.status(200).json({ "message": "I'm working" })
+    res.status(200).json({ "message": "I'm working" });
 })
-
-app.get('/yelp',businesseController)
-
-
+app.get('/yelp', businesseController);
+app.get('/freeLancer', freeLancerController);
 app.listen(PORT, () => {
     console.log(`Listening to port ${PORT}`);
 })
