@@ -13,6 +13,8 @@ const businesseController = async (req, res) => {
             Element.alias,
             Element.name,
             Element.image_url,
+            Element.is_closed,
+            Element.url,
             Element.review_count,
             Element.categories,
             Element.rating,

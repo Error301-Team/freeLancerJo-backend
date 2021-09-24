@@ -8,6 +8,7 @@ class businesse {
         this.image_url = image_url;
         this.is_closed = is_closed;
         this.url = url;
+        this.review_count=review_count;
         this.categories = categories;
         this.rating = rating;
         this.coordinates = coordinates;
