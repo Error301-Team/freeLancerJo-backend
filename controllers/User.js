@@ -36,26 +36,15 @@ let delete_user = (req, res) => {
         res.json(users_list);
     })
 };
-const updated_user=async (req,res)=>{
-    let userID=req.params.id;
-    let updatedData=req.body;
-    userModel.findOne({_id:userID}).then(update=>{
-        update.name=updatedData.name;
-        update.rating=updatedData.rating;
-        update.img=updatedData.img;
-        update.email=updatedData.email;
-        update.phoneNumber = updatedData.phoneNumber;
-        update.skills = updatedData.skills;
-        update.experience = updatedData.experience;
-        update.job_describtion = updatedData.job_describtion;
-        update.price = updatedData.price;
-        update.location = updatedData.location;
-        update.lauguages = updatedData.lauguages;
-        update.Education = updatedData.Education;
-        update.save();
-    });
-       setTimeout(()=>{
-        userModel.find({}).then(data=>res.json(data));
-    },250)
-};
+const updated_user = async (req, res) => {
+    let userID = req.params.id;
+    let updatedData = req.body;
+    const user = await userModel.findByIdAndUpdate(userID, updatedData, { new: true, runValidators: true })
+    res.status(200).json({
+        status: "success",
+        data: {
+            user
+        }
+    })
+}
 module.exports = { get_users, create_user, delete_user,updated_user};
