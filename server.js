@@ -28,11 +28,11 @@ app.get('/seed-data',(req,res)=>{
 app.get('/getUsers',get_users);
 app.post('/createUser',create_user);
 app.delete('/deleteUser/:id',delete_user);
-app.put("/updateUser/:id",updated_user);
+app.patch("/updateUser/:id",updated_user);
 app.get('/getJobs',get_jobs);
 app.post('/createJob',create_job);
 app.delete('/deleteJob/:id',delete_job);
-app.put("/updateJob/:id",updated_job);
+app.patch("/updateJob/:id",updated_job);
 app.put("/updateApplicants/:id",update_applied);
 app.get('/yelp', businesseController);
 app.get('/freeLancer', freeLancerController);
