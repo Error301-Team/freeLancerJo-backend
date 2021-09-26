@@ -1,0 +1,71 @@
+"use strict";
+const { jobModel, Job } = require("../models/Job.model");
+
+let get_jobs = async (req, res) => {
+    let jobs_list = await jobModel.find({});
+    res.status(201).json(jobs_list);
+};
+let create_job = async (req, res) => {
+    let { name,description,email,category, location,applied,skills,tools,qualification,salary,phononumber,status} = req.body;
+    let newJob = new jobModel({
+        name: name,
+        description: description,
+        email: email,
+        category: category,
+        location: location,
+        applied: applied,
+        skills: skills,
+        tools:tools,
+        qualification: qualification,
+        salary: salary,
+        phononumber:phononumber,
+        status:status
+    });
+    newJob.save();
+    setTimeout(()=>{
+        jobModel.find({}).then(data=>res.json(data));
+    },250);
+};
+let delete_job = (req, res) => {
+    let id = req.params.id;
+    jobModel.findByIdAndDelete(id, async (error, data) => {
+        if (error) {
+            res.status(500).send("An Error Occured")
+        }
+        let jobs_list = await jobModel.find({})
+        res.json(jobs_list);
+    })
+};
+const updated_job=async (req,res)=>{
+    let jobID=req.params.id;
+    let updatedData=req.body;
+    jobModel.findOne({_id:jobID}).then(update=>{
+        update.name=updatedData.name;
+        update.description=updatedData.description;
+        update.email=updatedData.email;
+        update.category = updatedData.category;
+        update.location = updatedData.location;
+        update.skills = updatedData.skills;
+        update.qualification = updatedData.qualification;
+        update.salary = updatedData.salary;
+        update.phononumber = updatedData.phononumber;
+        update.status = updatedData.status;
+        update.save();
+    });
+       setTimeout(()=>{
+        jobModel.find({}).then(data=>res.json(data));
+    },250)
+};
+const update_applied=async (req,res)=>{
+    let jobID=req.params.id;
+    let updatedData=req.body;
+    jobModel.findOne({_id:jobID}).then(update=>{
+        update.applied.push(updatedData.applied);
+        update.save();
+    });
+       setTimeout(()=>{
+        jobModel.find({}).then(data=>res.json(data));
+    },250)
+};
+
+module.exports = {get_jobs, create_job, delete_job,updated_job,update_applied};

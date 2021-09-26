@@ -4,8 +4,7 @@ const { userModel, User } = require("../models/User.model");
 let get_users = async (req, res) => {
     let users_list = await userModel.find({});
     res.status(201).json(users_list);
-}
-
+};
 let create_user = async (req, res) => {
     let { name, rating, img, email, phoneNumber, skills, experience, job_describtion, price, location ,lauguages,Education} = req.body;
     let newUser = new userModel({
@@ -23,10 +22,10 @@ let create_user = async (req, res) => {
         Education:Education
     });
     newUser.save();
-    let users_list = await userModel.find({});
-    res.status(201).json(users_list);
-}
-
+    setTimeout(()=>{
+        userModel.find({}).then(data=>res.json(data));
+    },250)
+};
 let delete_user = (req, res) => {
     let id = req.params.id;
     userModel.findByIdAndDelete(id, async (error, data) => {
@@ -36,7 +35,7 @@ let delete_user = (req, res) => {
         let users_list = await userModel.find({})
         res.json(users_list);
     })
-}
+};
 const updated_user=async (req,res)=>{
     let userID=req.params.id;
     let updatedData=req.body;
@@ -58,6 +57,5 @@ const updated_user=async (req,res)=>{
        setTimeout(()=>{
         userModel.find({}).then(data=>res.json(data));
     },250)
-}
-
+};
 module.exports = { get_users, create_user, delete_user,updated_user};
