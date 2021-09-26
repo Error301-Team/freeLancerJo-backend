@@ -57,3 +57,19 @@
 - user
 - userImageURL
 - imageURL
+
+## Freelancers Database
+
+- did 4 requests for freelancers Database on atlas 
+
+### Requests
+
+- get request done by /getUsers to get all users to the heroku link to get data
+
+- post request done by putting /createUser in the url and a body for the user data based on the user Schema
+
+- delete request done by putting /deleteUser/{id} and choosing the user to be deleting by putting the userid in the url
+
+- updateUser  request done by putting /updateUser/{id} and a body for the user data based on the user Schema 
+
+choosing the user data to be update by putting the userid in the url
