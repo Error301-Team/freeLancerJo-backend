@@ -25,4 +25,15 @@ let create_user = async (req, res) => {
     res.status(201).json(users_list);
 }
 
-module.exports = { get_users,create_user };
+let delete_user= (req,res)=>{
+    let id= req.params.id;
+    userModel.findByIdAndDelete(id, async(error , data)=>{
+        if (error) {
+            res.status(500).send("An Error Occured")
+        }
+        let users_list = await userModel.find({})
+        res.json(users_list);
+    })
+}
+
+module.exports = { get_users,create_user ,delete_user};
