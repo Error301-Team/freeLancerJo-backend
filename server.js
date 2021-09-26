@@ -13,7 +13,8 @@ const businesseController = require("./controllers/Yelp");
 const freeLancerController=require("./controllers/Freelancer");
 const PixabayController=require("./controllers/Pixabay");
 const {seedUser} =require("./models/User.model");
-const {get_users}=require("./controllers/User")
+const {get_users}=require("./controllers/User");
+const {create_user}=require("./controllers/User");
 
 mongoose.connect(`${process.env.MONGO_SERVER}`,{useNewUrlParser: true, useUnifiedTopology: true});
 app.get('/', (req, res) => {
@@ -26,6 +27,7 @@ app.get('/seed-data',(req,res)=>{
         })
     });
 app.get('/getUsers',get_users);
+app.post('/createUser',create_user);
 app.get('/yelp', businesseController);
 app.get('/freeLancer', freeLancerController);
 app.get('/pixabay', PixabayController);
