@@ -92,3 +92,5 @@ choosing the user data to be update by putting the userid in the url
 - delete request done by delete /deleteJob/{id} and choosing the Job to be deleting by putting the Jobid in the url
 
 - update Job  request done by patch /updateJob/{id} and a body for the Job data based on the Job Schema 
+
+## Did auth0 call function to call if the use is authenticated
