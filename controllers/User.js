@@ -6,7 +6,7 @@ let get_users = async (req, res) => {
     res.status(201).json(users_list);
 };
 let create_user = async (req, res) => {
-    let { name, rating, img, email, phoneNumber, skills, experience, job_describtion, price, location ,lauguages,Education,madeBy} = req.body;
+    let { name, rating, img, email, phoneNumber, skills, experience, job_describtion, price, location ,lauguages,Education,madeBy ,accoutType} = req.body;
     let newUser = new userModel({
         name: name,
         rating: rating,
@@ -21,6 +21,7 @@ let create_user = async (req, res) => {
         lauguages:lauguages,
         Education:Education,
         madeBy:madeBy,
+        accoutType:accoutType,
     });
     newUser.save();
     setTimeout(()=>{
