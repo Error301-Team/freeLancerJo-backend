@@ -13,6 +13,7 @@ const Job = new mongoose.Schema({
     salary:String,
     phononumber:String,
     status:Boolean,
+    madeBy:String,
 });
 const jobModel = mongoose.model('Jobs', Job);
 module.exports = { Job, jobModel };
