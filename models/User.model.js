@@ -12,6 +12,11 @@ const User = new mongoose.Schema({
     job_describtion: String,
     price: String,
     location: String,
+    lauguages:Array,
+    Education:Object,
+    madeBy:String,
+    accoutType:String,
+    auth0:String,
 });
 let MenNameArray = ['James', 'Robert', 'John' , 'William', 'Joseph', 'Mohmmad',  'Kevin', 'Brian', 'Tyler', 'Kyle','Anas','Joe','Hareem','Adam','Ahmad'];
 let WomanNameArray=['Michael','Sarah', 'Kelly','Kelise','Sade','Lily','Rose','Amal','Arwa'];
@@ -63,6 +68,56 @@ let womanImgArr=["https://thejacquereidexperience.com/images/822370.jpg",
 'https://i.pinimg.com/originals/db/c2/3a/dbc23aa0d94e95eac90f5eca466b26a9.jpg',
 'https://www.nicepng.com/png/full/52-521023_download-free-icon-female-vectors-blank-facebook-profile.png',
 ]
+let eduArray = [{School:"AlBalqa Applied University",AreaOfStudys:"software engineering",Degree:"Diploma",From:"2016",To:"2020"},
+{School:"Yarmouk university",AreaOfStudys:"Architecture",Degree:"Diploma",From:"2014",To:"2018"},
+{School:"Philadelphia university",AreaOfStudys:"Architecture",Degree:"Diploma",From:"2016",To:"2021"},
+{School:"Jordan university",AreaOfStudys:"Architecture",Degree:"Diploma",From:"2014",To:"2018"},
+{School:"ltuc college",AreaOfStudys:"Architecture",Degree:"Diploma",From:"2011",To:"2015"},
+{School:"Davidson College",AreaOfStudys:"Graphic Designer",Degree:"Diploma",From:"2010",To:"2015"},
+{School:"United States Air Force Academy",AreaOfStudys:"Graphic Designer",Degree:"Diploma",From:"2013",To:"2017"},
+{School:"Brown University",AreaOfStudys:"Graphic Designer",Degree:"Diploma",From:"2009",To:"20015"},
+{School:"Case Western Reserve University",AreaOfStudys:"Graphic Designer",Degree:"Diploma",From:"2001",To:"2005"},
+{School:"Colgate University",AreaOfStudys:"photographer",Degree:"computer science",From:"2020",To:""},
+{School:"Amherst College",AreaOfStudys:"computer science",Degree:"Diploma",From:"2015",To:"2020"},
+{School:"Rice University",AreaOfStudys:"computer science",Degree:"Diploma",From:"2014",To:"2018"},
+{School:"University of Rochester",AreaOfStudys:"computer science",Degree:"Diploma",From:"2012",To:"2016"},
+{School:"University of Texas",AreaOfStudys:"photographer",Degree:"Diploma",From:"2003",To:"2007"},
+{School:"Florida State University",AreaOfStudys:"photographer",Degree:"Diploma",From:"2008",To:"2013"},
+{School:"University of California",AreaOfStudys:"photographer",Degree:"Diploma",From:"2000",To:"2005"},
+{School:"University of Dayton",AreaOfStudys:"software engineering",Degree:"Diploma",From:"2006",To:"2009"},
+{School:"University of Potsdam",AreaOfStudys:"software engineering",Degree:"Diploma",From:"2010",To:"2013"},
+{School:"University of Münster",AreaOfStudys:"software engineering",Degree:"Diploma",From:"2015",To:"2020"},
+{School:"University of Bonn",AreaOfStudys:"Architecture",Degree:"Diploma",From:"2015",To:"2019"},
+{School:"Cairo University",AreaOfStudys:"Architecture",Degree:"Diploma",From:"2015",To:"2018"},
+{School:"University of Hohenheim",AreaOfStudys:"Architecture",Degree:"Diploma",From:"2015",To:"2021"},
+{School:"",AreaOfStudys:"",Degree:"High School",From:"2016",To:"2018"},
+{School:"",AreaOfStudys:"",Degree:"High School",From:"2018",To:"2020"},
+{School:"",AreaOfStudys:"",Degree:"High School",From:"2012",To:"2015"},
+{School:"",AreaOfStudys:"",Degree:"High School",From:"2013",To:"2015"},
+{School:"",AreaOfStudys:"",Degree:"High School",From:"2016",To:"2018"},
+{School:"",AreaOfStudys:"",Degree:"High School",From:"2014",To:"2016"},
+{School:"",AreaOfStudys:"",Degree:"High School",From:"2013",To:"2016"},
+{School:"",AreaOfStudys:"",Degree:"High School",From:"2014",To:"2017"},
+{School:"",AreaOfStudys:"",Degree:"High School",From:"2012",To:"2015"},
+{School:"",AreaOfStudys:"",Degree:"High School",From:"2013",To:"2015"},
+{School:"",AreaOfStudys:"",Degree:"High School",From:"2019",To:"2021"},
+{School:"",AreaOfStudys:"",Degree:"High School",From:"2018",To:"2020"},
+{School:"King’s College London",AreaOfStudys:"Architecture",Degree:"master's ",From:"2018",To:"2020"},
+{School:"UCL",AreaOfStudys:"computer science",Degree:"master's",From:"2019",To:"2021"},
+{School:"Tottori University",AreaOfStudys:"computer science",Degree:"master's",From:"2013",To:"2016"},
+{School:"University of Tokyo",AreaOfStudys:"software engineering",Degree:"master's",From:"2018",To:"2020"},
+{School:"ITMO University",AreaOfStudys:"software engineering",Degree:"master's",From:"2014",To:"2016"},
+{School:"Novosibirsk State University",AreaOfStudys:"photographer",Degree:"master's",From:"2016",To:"2018"},
+{School:"Higher School of Economics",AreaOfStudys:"photographer",Degree:"master's",From:"2016",To:"2018"},
+{School:"Lomonosov Moscow State University",AreaOfStudys:"Graphic Designer",Degree:"Doctorate",From:"2003",To:"2007"},
+{School:"Lomonosov Moscow State University",AreaOfStudys:"Graphic Designer",Degree:"Doctorate",From:"2015",To:"2020"},
+{School:"Harvard University",AreaOfStudys:"Architecture",Degree:"Doctorate",From:"2006",To:"2009"},
+{School:"Harvard University",AreaOfStudys:"Architecture",Degree:"Doctorate",From:"2015",To:"2019"},
+{School:"Lomonosov Moscow State University",AreaOfStudys:"Architecture",Degree:"Doctorate",From:"2012",To:"2016"},
+{School:"Harvard University",AreaOfStudys:"Architecture",Degree:"Doctorate",From:"2016",To:"2020"},
+]
+let lauguagesArray=["English","English","English","English","English","English","English","English","Arabic","Arabic","Arabic",
+"Spanish","Spanish","Italian","Russian","Chinese","Greek","Portuguese","Portuguese","Hindi","Hindi"]
 
 const userModel = mongoose.model('User', User);
 
@@ -73,6 +128,10 @@ let getRandom =(max,min)=> {
   }
 let seedUser = () => {
     for (let i = 0; i < 30; i++) {
+        let lauguagesArr=[];
+        let firstLauguage=lauguagesArray[getRandom(lauguagesArray.length-1,0)];
+        let secendLauguage=lauguagesArray[getRandom(lauguagesArray.length-1,0)];
+        firstLauguage!==secendLauguage?lauguagesArr=[firstLauguage,secendLauguage]:lauguagesArr[firstLauguage];
         if(i%2===0){
             let newUser = new userModel({
                 name: MenNameArray[getRandom(MenNameArray.length-1,0)]+" "+MenNameArray[getRandom(MenNameArray.length-1,0)],
@@ -85,8 +144,9 @@ let seedUser = () => {
                 job_describtion: job_describtionArray[getRandom(job_describtionArray.length-1,0)],
                 price: priceArray[getRandom(priceArray.length-1,0)],
                 location: locationArray[getRandom(locationArray.length-1,0)],
+                lauguages:lauguagesArr,
+                Education: eduArray[getRandom(eduArray.length-1,0)],
             });
-            console.log(newUser);
             newUser.save();
         }else{
             let newUser = new userModel({
@@ -100,9 +160,9 @@ let seedUser = () => {
                 job_describtion: job_describtionArray[getRandom(job_describtionArray.length-1,0)],
                 price: priceArray[getRandom(priceArray.length-1,0)],
                 location: locationArray[getRandom(locationArray.length-1,0)],
-                
+                lauguages:lauguagesArr,
+                Education: eduArray[getRandom(eduArray.length-1,0)],
             });
-            console.log(newUser);
             newUser.save();
         }
     }
