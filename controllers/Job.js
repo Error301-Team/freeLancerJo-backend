@@ -6,7 +6,7 @@ let get_jobs = async (req, res) => {
     res.status(201).json(jobs_list);
 };
 let create_job = async (req, res) => {
-    let { name, description, email, category, location, applied, skills, tools, qualification, salary, phononumber, status } = req.body;
+    let { name, description, email, category, location, applied, skills, tools, qualification, salary, phononumber, status ,madeBy} = req.body;
     let newJob = new jobModel({
         name: name,
         description: description,
@@ -19,7 +19,8 @@ let create_job = async (req, res) => {
         qualification: qualification,
         salary: salary,
         phononumber: phononumber,
-        status: status
+        status: status,
+        madeBy:madeBy
     });
     newJob.save();
     setTimeout(() => {
@@ -36,38 +37,6 @@ let delete_job = (req, res) => {
         res.json(jobs_list);
     })
 };
-// const updated_job=async (req,res)=>{
-//     let jobID=req.params.id;
-//     let updatedData=req.body;
-//     jobModel.findOne({_id:jobID}).then(update=>{
-//         update.name=updatedData.name;
-//         update.description=updatedData.description;
-//         update.email=updatedData.email;
-//         update.category = updatedData.category;
-//         update.location = updatedData.location;
-//         update.skills = updatedData.skills;
-//         update.qualification = updatedData.qualification;
-//         update.salary = updatedData.salary;
-//         update.phononumber = updatedData.phononumber;
-//         update.status = updatedData.status;
-//         update.save();
-//     });
-//        setTimeout(()=>{
-//         jobModel.find({}).then(data=>res.json(data));
-//     },250)
-// };
-const update_applied = async (req, res) => {
-    let jobID = req.params.id;
-    let updatedData = req.body;
-    jobModel.findOne({ _id: jobID }).then(update => {
-        update.applied.push(updatedData.applied);
-        update.save();
-    });
-    setTimeout(() => {
-        jobModel.find({}).then(data => res.json(data));
-    }, 250)
-};
-
 const updated_job = async (req, res) => {
     let jobID = req.params.id;
     let updatedData = req.body;

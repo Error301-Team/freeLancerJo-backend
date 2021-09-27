@@ -14,6 +14,7 @@ const User = new mongoose.Schema({
     location: String,
     lauguages:Array,
     Education:Object,
+    madeBy:String,
 });
 let MenNameArray = ['James', 'Robert', 'John' , 'William', 'Joseph', 'Mohmmad',  'Kevin', 'Brian', 'Tyler', 'Kyle','Anas','Joe','Hareem','Adam','Ahmad'];
 let WomanNameArray=['Michael','Sarah', 'Kelly','Kelise','Sade','Lily','Rose','Amal','Arwa'];
