@@ -22,7 +22,7 @@ let create_user = async (req, res) => {
         Education:Education,
         madeBy:madeBy,
         accoutType:accoutType,
-        auth0:String,
+        auth0:auth0,
     });
     newUser.save();
     setTimeout(()=>{
