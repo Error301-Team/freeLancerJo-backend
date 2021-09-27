@@ -48,4 +48,4 @@ const updated_job = async (req, res) => {
         }
     })
 }
-module.exports = { get_jobs, create_job, delete_job, updated_job, update_applied };
+module.exports = { get_jobs, create_job, delete_job, updated_job };
