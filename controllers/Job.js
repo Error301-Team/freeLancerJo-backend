@@ -41,11 +41,7 @@ const updated_job = async (req, res) => {
     let jobID = req.params.id;
     let updatedData = req.body;
     const job = await jobModel.findByIdAndUpdate(jobID, updatedData, { new: true, runValidators: true })
-    res.status(200).json({
-        status: "success",
-        data: {
-            job
-        }
-    })
+    let jobs_list = await jobModel.find({});
+    res.status(201).json(jobs_list);
 }
 module.exports = { get_jobs, create_job, delete_job, updated_job };
