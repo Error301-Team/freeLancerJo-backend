@@ -34,10 +34,7 @@ let skillsArray = ['Positive attitude', 'Communication', 'Teamwork', 'Self-manag
     'Resilience', 'Organisation', 'Perseverance', 'Ability to work under pressure', 'Leadership', 'Critical Thinking',
     'Logical Thinking'];
 let xpArray = ['training', 'Entry-level', 'Low Intermediate', 'Intermediate', 'Mid-level', 'executive-level'];
-let job_describtionArray = ['Financial Manager', 'Operations Supervisor', 'Web Programmer', 'Back-end Developer',
-    'Database Administrator', 'Game Developer', 'Architect', 'Architect', 'Architect', 'UI/UX Designer',
-    'Graphic Designer', 'Illustrator job', 'Visual Designer', 'Photographer', 'Photo Editor', 'Journalist','Gamer'
-,'Gamer','Gamer','Gamer','Gamer'];
+let job_describtionArray = ['Photography', 'Architecture', 'Designer',"Software Development"];
 let priceArray = ['20', '25', '30', '40', '50', '70', '100', '120', '250', '280', '90', '13', '17']
 let locationArray = ['Amman', 'Salt', 'Jerash', 'Zarqa', 'Irbid', 'Kerak', 'At-Tafilah',
     'Nashville, TN', 'Kingston', 'Athens', 'Bangkok', 'Bogotá', 'Valletta', 'Pyongyang', 'Riga', 'paris', 'Copenhagen', 'Tunis']
