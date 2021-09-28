@@ -17,6 +17,8 @@ const {seedUser} =require("./models/User.model");
 const {get_users,create_user,delete_user,updated_user}=require("./controllers/User");
 const {get_jobs, create_job, delete_job,updated_job}=require("./controllers/Job");
 const {authenticated}=require("./controllers/Auth0");
+
+
 mongoose.connect(`${process.env.MONGO_SERVER}`,{useNewUrlParser: true, useUnifiedTopology: true});
 app.get('/', (req, res) => {
     res.status(200).json({ "message": "I'm working" });
